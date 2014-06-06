@@ -1,0 +1,57 @@
+
+<?php echo $this->tag->form("teams/create") ?>
+
+<table width="100%">
+    <tr>
+        <td align="left"><?php echo $this->tag->linkTo(array("teams", "Go Back")) ?></td>
+        <td align="right"><?php echo $this->tag->submitButton("Save") ?></td>
+    <tr>
+</table>
+
+<?php echo $this->getContent(); ?>
+
+<div align="center">
+    <h1>Create teams</h1>
+</div>
+
+<table>
+    <tr>
+        <td align="right">
+            <label for="team1">Team1</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("team1", "type" => "number")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="team2">Team2</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("team2", "type" => "number")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="team3">Team3</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("team3", "type" => "number")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="team4">Team4</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("team4", "type" => "number")) ?>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><?php echo $this->tag->submitButton("Search") ?></td>
+    </tr>
+</table>
+
+</form>

@@ -1,0 +1,62 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("players/index", "Go Back")); ?>
+        </td>
+         <td align='center'>
+            <?php echo $this->tag->linkTo(array("players/createTeam", "Create Team")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("players/new", "Create ")); ?>
+        </td>
+    <tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Team</th>
+            <th>Position</th>
+            <th>Point</th>
+            <th>Attack Of Point</th>
+            <th>Defense Of Point</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $player) { ?>
+        <tr>
+            <td><?php echo $player->getId() ?></td>
+            <td><?php echo $player->getName() ?></td>
+            <td><?php echo $player->getTeam() ?></td>
+            <td><?php echo $player->getPosition() ?></td>
+            <td><?php echo $player->getPoint() ?></td>
+            <td><?php echo $player->getAttackPoint() ?></td>
+            <td><?php echo $player->getDefensePoint() ?></td>
+            <td><?php echo $this->tag->linkTo(array("players/edit/" . $player->getId(), "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("players/delete/" . $player->getId(), "Delete")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("players/autoSetTeam/" . $player->getId(), "Auto set team")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("players/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("players/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("players/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("players/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <tbody>
+</table>

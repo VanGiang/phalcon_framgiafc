@@ -1,0 +1,54 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("teams/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("teams/new", "Create ")); ?>
+        </td>
+    <tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Team1</th>
+            <th>Team2</th>
+            <th>Team3</th>
+            <th>Team4</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $team) { ?>
+        <tr>
+            <td><?php echo $team->getId() ?></td>
+            <td><?php echo $team->getTeam1() ?></td>
+            <td><?php echo $team->getTeam2() ?></td>
+            <td><?php echo $team->getTeam3() ?></td>
+            <td><?php echo $team->getTeam4() ?></td>
+            <td><?php echo $this->tag->linkTo(array("teams/edit/" . $team->getId(), "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("teams/delete/" . $team->getId(), "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("teams/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("teams/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("teams/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("teams/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <tbody>
+</table>
